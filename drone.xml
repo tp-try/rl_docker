@@ -1,0 +1,26 @@
+<mujoco model="drone">
+  <option gravity="0 0 -9.81" timestep="0.01"/>
+  
+  <worldbody>
+    <light pos="0 0 10"/>
+    <geom name="floor" type="plane" size="20 20 0.1" rgba="0.8 0.9 0.8 1"/>
+    
+    <body name="drone" pos="0 0 1">
+      <freejoint name="root"/>
+      <geom name="body" type="box" size="0.1 0.1 0.03" mass="1.0" rgba="0.3 0.3 0.8 1"/>
+      
+      <!-- 四个电机 -->
+      <site name="motor1" pos=" 0.15  0.15 0" size="0.01"/>
+      <site name="motor2" pos="-0.15  0.15 0" size="0.01"/>
+      <site name="motor3" pos="-0.15 -0.15 0" size="0.01"/>
+      <site name="motor4" pos=" 0.15 -0.15 0" size="0.01"/>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <general name="thrust1" site="motor1" gear="0 0 1 0 0 0" ctrlrange="0 5"/>
+    <general name="thrust2" site="motor2" gear="0 0 1 0 0 0" ctrlrange="0 5"/>
+    <general name="thrust3" site="motor3" gear="0 0 1 0 0 0" ctrlrange="0 5"/>
+    <general name="thrust4" site="motor4" gear="0 0 1 0 0 0" ctrlrange="0 5"/>
+  </actuator>
+</mujoco>
